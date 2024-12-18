@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.sys.mapper.UserMapper">
+    <select id="getRoleDescByUserId" parameterType="Integer" resultType="String">
+        SELECT b.role_desc
+        FROM `user` a, `role` b
+        WHERE a.user_role_id = b.role_id
+        AND a.user_id = #{userId}
+    </select>
+    <select id="getSchoolDescByUserId" parameterType="Integer" resultType="String">
+        SELECT b.school_desc
+        FROM `user` a, `school` b
+        WHERE a.user_school_id = b.school_id
+        AND a.user_id = #{userId}
+    </select>
+    <select id="getPasswordByUserId" parameterType="Integer" resultType="String">
+        SELECT password
+        FROM `user`
+        WHERE user_id = #{userId}
+    </select>
+    <update id="updateKeyInfoByUserId">
+        UPDATE `user`
+        SET password = #{newPassword}, username = #{username}
+        WHERE user_id = #{userId} AND password = #{password}
+    </update>
+</mapper>

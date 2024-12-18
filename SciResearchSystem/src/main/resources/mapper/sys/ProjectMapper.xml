@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.sys.mapper.ProjectMapper">
+    <select id="getSchoolDescByProId" parameterType="Integer" resultType="String">
+        SELECT b.school_desc
+        FROM `project` a, `school` b
+        WHERE a.pro_school_id = b.school_id
+        AND a.pro_id=#{proId}
+    </select>
+    <select id="getChargeNameByProId" parameterType="Integer" resultType="String">
+        SELECT b.username
+        FROM `project` a, `user` b
+        WHERE a.pro_charge_id = b.user_id
+        AND a.pro_id=#{proId}
+    </select>
+    <select id="getResultsTypeDescByProId" parameterType="Integer" resultType="String">
+        SELECT b.results_type_desc
+        FROM `project` a, `results_type` b
+        WHERE a.results_type_id = b.results_type_id
+        AND a.pro_id=#{proId}
+    </select>
+    <select id="getProStatusDescByProId" parameterType="Integer" resultType="String">
+        SELECT b.status_desc
+        FROM `project` a, `status` b
+        WHERE a.pro_status_id = b.status_id
+        AND a.pro_id=#{proId}
+    </select>
+</mapper>

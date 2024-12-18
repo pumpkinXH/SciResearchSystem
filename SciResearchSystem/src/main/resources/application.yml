@@ -1,0 +1,37 @@
+server:
+#  ip: 121.41.43.164
+  ip: localhost
+  port: 9999
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql:///bishe
+  redis:
+    port:6379
+    host:localhost
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+logging:
+  level:
+    com.xh: debug
+
+#设置逻辑删除
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+
+  #扫描包
+  type-aliases-package: com.xh.*.entity
+
+files:
+  upload:
+    path: D:/Java/毕设/SciResearchSystem/files/
+#    path: /home/files/

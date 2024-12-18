@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xh.sys.mapper.ResultsMapper">
+    <select id="getSchoolDescByResultsId" parameterType="Integer" resultType="String">
+        SELECT b.school_desc
+        FROM `results` a, `school` b
+        WHERE a.results_school_id = b.school_id
+        AND a.results_id=#{resultsId}
+    </select>
+    <select id="getChargeNameByResultsId" parameterType="Integer" resultType="String">
+        SELECT b.username
+        FROM `results` a, `user` b
+        WHERE a.results_charge_id = b.user_id
+        AND a.results_id=#{resultsId}
+    </select>
+    <select id="getResultsTypeDescByResultsId" parameterType="Integer" resultType="String">
+        SELECT b.results_type_desc
+        FROM `results` a, `results_type` b
+        WHERE a.type_id = b.results_type_id
+        AND a.results_id=#{resultsId}
+    </select>
+    <select id="getResultsStatusDescByResultsId" parameterType="Integer" resultType="String">
+        SELECT b.status_desc
+        FROM `results` a, `status` b
+        WHERE a.results_status_id = b.status_id
+        AND a.results_id=#{resultsId}
+    </select>
+</mapper>
